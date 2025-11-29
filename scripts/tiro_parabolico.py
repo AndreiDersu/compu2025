@@ -6,11 +6,11 @@ def graficadora(
     v:float,
     ang:float
     ):
-    """Grafica de tiros parabolicos de posicion contra posicion
+    """Grafica de tiros parabolicos de posicion contra posicion.
 
     Args:
-        v (float): velocidad en metros por segundo
-        ang (float): angulo en grados        
+        v (float): velocidad en metros por segundo.
+        ang (float): angulo en grados.
     """
     angle=np.radians(ang)
     end= np.roots([-4.9, v * np.sin(angle), 0])
