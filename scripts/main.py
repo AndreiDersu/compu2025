@@ -1,10 +1,15 @@
 import time
 
 #Importa los modulos a utilizar, uno por cada programa del proyecto final.
-from cuadratic_formula import cuadratic_formula, matmult, matinv
+
+#bloque A
 from Collatz import collatz
 from tiro_parabolico import this_tiro_parabolico
 from data_base import data_base
+#bloque B
+from curp import curp
+#bloque C
+from matrices import matrixinv, matrixmult
 
 #Cargar instrucciones, el readme y la secuencia de inicio
 with open('sources/inicio.txt', 'r', encoding='utf-8') as archivo:
@@ -15,6 +20,7 @@ with open('readme.txt', 'r', encoding='utf-8') as archivo:
     readme = archivo.read()
 
 #Define funciones para usar cada uno de los modulos importados
+#funciones del bloque A
 def numero_2():
     """Sucesion de Collatz.
     A partir de este modoulo se ejecuta 
@@ -59,16 +65,33 @@ def numero_3():
 				pass
 			case "n":
 				break
+#funciones del bloque B
+def numero_4():
+    
+    pass
+def numero_5():
+    pass
+
+#funciones del bloque C
+def numero_6():
+    pass
+
+def numero_7():
+    pass
+
+#readme
+def numero_8():
+    pass
 
 #inicia el codigo principal
 def main():
-    dic = {1:numero_1, 2:numero_2,3:numero_3}
+    dic = {1:numero_1, 2:numero_2,3:numero_3,4:numero_4,5:numero_5,6:numero_6,7:numero_7,8:numero_8}
     for line in inicio.splitlines():
         print(f"\033[93m{line}\033[0m")
         time.sleep(0.05)
     while True:
         try:
-            dic[int(input ("selecciona tu modo \n 1: Tiro Parabolico \n 2: Sucesion de Collatz \n 3: Base de datos\n 9: Salir \n"))]()
+            dic[int(input ("selecciona tu modo \n 1: Tiro Parabolico \n 2: Sucesion de Collatz \n 3: Base de datos \n 4: Curp \n 5: algo \n 6: Multiplicacion de matrices 3x3 \n 7: Inversa de matriz 3x3 \n 8: Readme \n 9: Salir \n"))]()
         except KeyError:
             print ("hasta la vista, baby")
             break
