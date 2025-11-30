@@ -21,6 +21,22 @@ with open('readme.txt', 'r', encoding='utf-8') as archivo:
 
 #Define funciones para usar cada uno de los modulos importados
 #funciones del bloque A
+def numero_1():    
+    while True:
+        print("bienvendio al programa de tiro parabolicos, \n presiona cualquier tecla si quieres calcular el tiro parabolico con condiciones iniciales, pulsa x para salir")
+        try: 
+            index=input("")
+            if index != "x":
+                print("cargando tiro parabólico...")
+                this_tiro_parabolico() #Ejercicio uno
+            elif index == "x":
+                print("Finalizando procesos")
+                break
+            else:
+                print("Ingresa una entrada válida")
+        except ValueError: 
+            print("Ingresa una entrada válida")
+
 def numero_2():
     """Sucesion de Collatz.
     A partir de este modoulo se ejecuta 
@@ -39,22 +55,6 @@ def numero_2():
         else:
             break
         
-def numero_1():    
-    while True:
-        print("bienvendio al programa de tiro parabolicos, \n presiona cualquier tecla si quieres calcular el tiro parabolico con condiciones iniciales, pulsa x para salir")
-        try: 
-            index=input("")
-            if index != "x":
-                print("cargando tiro parabólico...")
-                this_tiro_parabolico() #Ejercicio uno
-            elif index == "x":
-                print("Finalizando procesos")
-                break
-            else:
-                print("Ingresa una entrada válida")
-        except ValueError: 
-            print("Ingresa una entrada válida")
-
 def numero_3():
 	print("Base de datos horario de alumnos")
 	while True:
