@@ -6,21 +6,26 @@ def graficadora(
     v:float,
     ang:float
     ):
-    """Grafica de tiros parabolicos de posicion contra posicion.
+    """Grafica de tiros parabolicos de posicion contra posicion usando matplotlib.
 
     Args:
         v (float): velocidad en metros por segundo.
         ang (float): angulo en grados.
     """
+    
+    #calcula las raices (cruces con el eje x) y pasa el angulo a radianes
     angle=np.radians(ang)
     end= np.roots([-4.9, v * np.sin(angle), 0])
     
+    #intervalo de tiempo a graficar
     t=np.linspace(0, end[0], 100)
     
+    #Separa los componentes de la velocidad |v|coseno(theta),|v|seno(theta)
     x= v * np.cos(angle) * t
     y= v * np.sin(angle) * t - 4.9 * t ** 2
-    plt.plot(x, y)
 
+    #generar grafica usando matplotlib
+    plt.plot(x, y)
     plt.xlabel("eje X")
     plt.ylabel("eje Y")
     plt.title("grafica del tiro")
@@ -42,47 +47,49 @@ def tiro_parabolico(
         list: altura maxima en metros, alcance en metros y velocidad final en metros sobre segundo.
     """
     
-    
+    #Separa los componentes de la velocidad |v|coseno(theta),|v|seno(theta) y pasa los angulos a radianes
     v0_x = v0 * cos(radians(ang))
     v0_y = v0 * sin(radians(ang))
         
         
-    #   4.9(t)^2 + v0(t) = 0
+    #Busca los momentos donde el proyectil llega al suelo usando la funcion x(t)=0 lo que implica  v0(t) + 4.9(t)^2 = 0
     end_time = np.roots([-G, v0_y, 0])
     
-    # x = v0_x(t)
+    #Encuentra el alcance usando la funcion x(t) = v0_x(t)
     alcance = v0_x * end_time[0]
     
-    # y = v0_y(t) - 4.9(t)^2
+    #Encuentra la altura maxima usando la funcion y(t) = v0_y(t) - 4.9(t)^2
     alt_max = v0_y * ( end_time[0] / 2 ) - G * (end_time[0] / 2) ** 2
     
+    #Encuentra la velocidad final, usando la formula de la velocidad a partir de velocidad inicial y aceleracion
     vf= v0_x + v0_y - 9.8 * end_time[0]
     
+    #regresa una lista con todos los datos obtenidos
     return [round(alt_max, 3), round(alcance, 3), vf]
 
-def this_tiro_parabolico():
-    """funcion para resolver el problema 1.
+def main():
+    """Condigo principal para resolver la funcion del problema.
     """
     while True:
         try:        
             ang = float(input("Ingresa el angulo de inclinación del tiro en grados: "))
             rapidez = float(input("Ingresa la rapidez inicial del tiro: "))
             
-            output = tiro_parabolico(v0=rapidez, ang=ang)
+            salida = tiro_parabolico(v0=rapidez, ang=ang)
             
             print("Los datos obtenitos son:")
-            print (f"La altura maxima fue: {output[0]} metros")
-            print(f"El alcanse del tiro fueron {output[1]} metros")
-            print(f"La velocidad final es de {output[2]} metros sobre segundo")
+            print (f"La altura maxima fue: {salida[0]} metros")
+            print(f"El alcanse del tiro fueron {salida[1]} metros")
+            print(f"La velocidad final es de {salida[2]} metros sobre segundo")
             
             graficadora(rapidez,ang)
             
-            rep = input("deseas repetir el tiro? pulsa y, sino, pulsa n ")
+            repetir = input("deseas repetir el tiro? pulsa y, sino, pulsa n ")
             
-            if  rep == ("n"):
+            if  repetir == ("n"):
                 print("Finalisando procesos")
                 break
-            elif rep == ("y"):
+            elif repetir == ("y"):
                 print("ok")
             else:
                 print("Entrada desconocida, finalisando procesos")
@@ -95,4 +102,4 @@ def this_tiro_parabolico():
             print(f"Error desconocido: {e}")
 
 if __name__ == "__main__":
-    this_tiro_parabolico()
+    main()

@@ -1,102 +1,195 @@
 import time
 
+
+
 #Importa los modulos a utilizar, uno por cada programa del proyecto final.
 
 #bloque A
 from Collatz import collatz
-from tiro_parabolico import this_tiro_parabolico
+from tiro_parabolico import main as tiro_parabolico
 from data_base import data_base
 #bloque B
-from curp import curp
+from curp import main as curp
 #bloque C
 from matrices import matrixinv, matrixmult
 
-#Cargar instrucciones, el readme y la secuencia de inicio
-with open('sources/inicio.txt', 'r', encoding='utf-8') as archivo:
-    inicio = archivo.read()
-with open('sources/instrucciones.txt', 'r', encoding='utf-8') as archivo:
-    instrucciones = archivo.read()
-with open('readme.txt', 'r', encoding='utf-8') as archivo:
-    readme = archivo.read()
 
-#Define funciones para usar cada uno de los modulos importados
+
+#Define funciones para usar cada uno de los modulos importados siguiendo una estructura similar
+
 #funciones del bloque A
-def numero_1():    
-    while True:
-        print("bienvendio al programa de tiro parabolicos, \n presiona cualquier tecla si quieres calcular el tiro parabolico con condiciones iniciales, pulsa x para salir")
-        try: 
-            index=input("")
-            if index != "x":
-                print("cargando tiro parabólico...")
-                this_tiro_parabolico() #Ejercicio uno
-            elif index == "x":
-                print("Finalizando procesos")
-                break
-            else:
-                print("Ingresa una entrada válida")
-        except ValueError: 
-            print("Ingresa una entrada válida")
-
-def numero_2():
-    """Sucesion de Collatz.
-    A partir de este modoulo se ejecuta 
+def numero_1():
+    """Tiro parabolico.
+    Programa para calcular tiros parabolicos
     """
+    print("bienvendio al programa de tiro parabolicos")
+    
     while True:
-        k = input("Calcula la sucesion de collatz de un numero natural.\n ingresa un numero natural o pulsa x para salir\n") 
-        if k != "x":
-            result = collatz(k)
-            try:
+        tiro_parabolico()
+        salir = input("pulsa n para salir, y para repetir \n")
+        match salir:
+            case "y":
+                pass
+            case "n":
+                break
+
+def numero_0():
+    """Sucesion de Collatz.
+    A partir de esta funcion se puede calcular la sucesion de collatz de un numero hasta llegar al 1.
+    """
+    print("Calcula la sucesion de collatz de un numero natural.")
+    
+    while True:
+        print("ingresa un numero natural o pulsa x para salir\n")
+        try:
+            #para salir o iniciar el codigo
+            salir = input("")
+            if salir != "x":
+                result = collatz(salir)
+                #imprime la sucesion en forma de funcion f(i) = a_i con sleeps para que haya tiempo de leer
                 for i in range (0,len(result)):
                     print(f"a_{i} = {result[i]}")
                     time.sleep(0.09)
-            except Exception:
-                pass
-            time.sleep(1)
-        else:
-            break
+                time.sleep(1)
+                
+            #salir    
+            elif salir == "x":
+                print("Regresando a menu principal")
+                break
+            else:
+                print("Ingresa una entrada válida")
+        except Exception:
+            print("ingresa una entrada valida")
+
+def numero_2():
+    """Sucesion de Collatz.
+    A partir de esta funcion se puede calcular la sucesion de collatz de un numero hasta llegar al 1.
+    """
+    print("Calcula la sucesion de collatz de un numero natural.")
+    
+    while True:
+        salir = input("ingresa un numero natural o pulsa x para salir\n")
+        match salir:
+            case "x":
+                break
+            case _:
+                result = collatz(salir)
+                #imprime la sucesion en forma de funcion f(i) = a_i con sleeps para que haya tiempo de leer
+                for i in range (0,len(result)):
+                    print(f"a_{i} = {result[i]}")
+                    time.sleep(0.09)
+                time.sleep(1)
+                
         
 def numero_3():
-	print("Base de datos horario de alumnos")
-	while True:
-		data_base()
-		select = input("pulsa n para salir, y para repetir \n")
-		match select:
-			case "y":
-				pass
-			case "n":
-				break
+    """Base de datos.
+    crea una base de datos para los alumnos
+    """
+    print("Base de datos horario de alumnos")
+    
+    while True:
+        data_base()
+        salir = input("pulsa n para salir, y para repetir \n")
+        match salir:
+            case "y":
+                pass
+            case "n":
+                break
+
 #funciones del bloque B
 def numero_4():
+    """CURP.
+    funcion para sacar el curp de cualquier ciudadano
+    """
+    print("Generador de curp")
     
-    pass
+    while True:
+        curp()
+        salir = input("pulsa n para salir, y para repetir \n")
+        match salir:
+            case "y":
+                pass
+            case "n":
+                break
+
 def numero_5():
     pass
 
 #funciones del bloque C
 def numero_6():
-    pass
+    """Multiplicacion de matrices 3x3.
+    funcion para multiplicar matrices a partir de inputs del usuario:
+    """
+    print("Multiplicacion de matrices 3x3")
+
+    while True:
+        matrixmult()
+        salir = input("pulsa n para salir, y para repetir \n")
+        match salir:
+            case "y":
+                pass
+            case "n":
+                break
 
 def numero_7():
-    pass
+    """Inversa de matriz 3x3.
+    funcion para sacar la inversa de una matriz a partir de inputs del usuario:
+    """
+    print("Inversa de matriz 3x3")
 
-#readme
-def numero_8():
-    pass
+    while True:
+        matrixinv()
+        salir = input("pulsa n para salir, y para repetir \n")
+        match salir:
+            case "y":
+                pass
+            case "n":
+                break
+
 
 #inicia el codigo principal
 def main():
-    dic = {1:numero_1, 2:numero_2,3:numero_3,4:numero_4,5:numero_5,6:numero_6,7:numero_7,8:numero_8}
-    for line in inicio.splitlines():
+    
+    #Carga instrucciones, el readme y la secuencia de inicio de la carpeta de recursos usando la funcion open
+    with open('sources/inicio.txt', 'r', encoding='utf-8') as archivo:
+        secuencia_inicio = archivo.read()
+    with open('sources/instrucciones.txt', 'r', encoding='utf-8') as archivo:
+        instrucciones = archivo.read()
+    with open('readme.txt', 'r', encoding='utf-8') as archivo:
+        readme = archivo.read()
+
+    
+    
+    #inicia un diccionario con las funciones definidas anteriormente para poder ser seleccionadas en el menu de inicio
+    dic = {1:numero_1, 2:numero_2,3:numero_3,4:numero_4,5:numero_5,6:numero_6,7:numero_7,8:readme}
+    
+    #Imprime la secuencia de inicio usando el metodo splitlines, osea que imprime las filas una a una cada 0.05 segundos
+    for line in secuencia_inicio.splitlines():
         print(f"\033[93m{line}\033[0m")
         time.sleep(0.05)
+        
+    #Inicia el bucle principal, con el menu de inicio, sistema anti errores y una forma de salir       
     while True:
+        
         try:
-            dic[int(input ("selecciona tu modo \n 1: Tiro Parabolico \n 2: Sucesion de Collatz \n 3: Base de datos \n 4: Curp \n 5: algo \n 6: Multiplicacion de matrices 3x3 \n 7: Inversa de matriz 3x3 \n 8: Readme \n 9: Salir \n"))]()
-        except KeyError:
-            print ("hasta la vista, baby")
-            break
-        except Exception:
-            print ("error, vuelve a intentarlo")
+            menu_selector = int(input ("selecciona tu modo \n 1: Tiro Parabolico \n 2: Sucesion de Collatz \n 3: Base de datos \n 4: Curp \n 5: algo \n 6: Multiplicacion de matrices 3x3 \n 7: Inversa de matriz 3x3 \n 8: Readme \n 9: Salir \n"))
+            
+            #empezar funcion seleccionada
+            if menu_selector != 9:
+                dic[menu_selector]()
+            
+            #finalizar el codigo    
+            elif menu_selector == 9:
+                print ("hasta la vista, baby")
+                break
+            
+            #Errores y otros
+            else:
+                print("Comando desconocido, vuelve a intentarlo")
+        except Exception as e:
+            print ("Error, vuelve a intentarlo", e)
 
+
+#iniciar el codigo
 if __name__ == "__main__":
     main()
