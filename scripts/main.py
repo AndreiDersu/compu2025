@@ -33,34 +33,6 @@ def numero_1():
             case "n":
                 break
 
-def numero_0():
-    """Sucesion de Collatz.
-    A partir de esta funcion se puede calcular la sucesion de collatz de un numero hasta llegar al 1.
-    """
-    print("Calcula la sucesion de collatz de un numero natural.")
-    
-    while True:
-        print("ingresa un numero natural o pulsa x para salir\n")
-        try:
-            #para salir o iniciar el codigo
-            salir = input("")
-            if salir != "x":
-                result = collatz(salir)
-                #imprime la sucesion en forma de funcion f(i) = a_i con sleeps para que haya tiempo de leer
-                for i in range (0,len(result)):
-                    print(f"a_{i} = {result[i]}")
-                    time.sleep(0.09)
-                time.sleep(1)
-                
-            #salir    
-            elif salir == "x":
-                print("Regresando a menu principal")
-                break
-            else:
-                print("Ingresa una entrada válida")
-        except Exception:
-            print("ingresa una entrada valida")
-
 def numero_2():
     """Sucesion de Collatz.
     A partir de esta funcion se puede calcular la sucesion de collatz de un numero hasta llegar al 1.

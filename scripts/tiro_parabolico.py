@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 def graficadora(
     v:float,
     ang:float
-    ):
+    ) -> None:
+    
     """Grafica de tiros parabolicos de posicion contra posicion usando matplotlib.
 
     Args:
@@ -36,7 +37,7 @@ def graficadora(
 def tiro_parabolico(
     v0:float,
     ang:float
-    ):
+    )-> list:
     G=float(4.9)
     """Funcion para calcular datos de un tiro parabolico. Angulo en grados, rapidez inicial en metros sobre segundo
 
@@ -68,7 +69,7 @@ def tiro_parabolico(
     return [round(alt_max, 3), round(alcance, 3), vf]
 
 def main():
-    """Condigo principal para resolver la funcion del problema.
+    """Codigo principal para graficar tiros parabolicos.
     """
     while True:
         try:        
@@ -83,18 +84,8 @@ def main():
             print(f"La velocidad final es de {salida[2]} metros sobre segundo")
             
             graficadora(rapidez,ang)
-            
-            repetir = input("deseas repetir el tiro? pulsa y, sino, pulsa n ")
-            
-            if  repetir == ("n"):
-                print("Finalisando procesos")
-                break
-            elif repetir == ("y"):
-                print("ok")
-            else:
-                print("Entrada desconocida, finalisando procesos")
-                break
-        
+            break
+                
         except ValueError:
             print("Entrada desconocida, vuelve a intentarlo")
             
