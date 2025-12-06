@@ -74,6 +74,13 @@ def main():
     while True:
         try:        
             ang = float(input("Ingresa el angulo de inclinación del tiro en grados: "))
+            
+            if ang < 90 and ang > 0:
+                pass
+            else:
+                print("ingresa un angulo valido")
+                continue
+            
             rapidez = float(input("Ingresa la rapidez inicial del tiro: "))
             
             salida = tiro_parabolico(v0=rapidez, ang=ang)

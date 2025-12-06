@@ -10,6 +10,7 @@ from tiro_parabolico import main as tiro_parabolico
 from data_base import data_base
 #bloque B
 from curp import main as curp
+from cuadratic_formula import main as cuadratic_formula
 #bloque C
 from matrices import matrixinv, matrixmult
 
@@ -85,7 +86,20 @@ def numero_4():
                 break
 
 def numero_5():
-    pass
+    """Formula cuadratica.
+    funcion para sacar las raices de una ecuacion de segundo grado:
+    """
+    print("Formula cuadratica")
+
+    while True:
+        cuadratic_formula()
+        salir = input("pulsa n para salir, y para repetir \n")
+        match salir:
+            case "y":
+                pass
+            case "n":
+                break
+
 
 #funciones del bloque C
 def numero_6():
@@ -133,7 +147,7 @@ def main():
     
     
     #inicia un diccionario con las funciones definidas anteriormente para poder ser seleccionadas en el menu de inicio
-    dic = {1:numero_1, 2:numero_2,3:numero_3,4:numero_4,5:numero_5,6:numero_6,7:numero_7,8:readme}
+    dic = {1:numero_1, 2:numero_2,3:numero_3,4:numero_4,5:numero_5,6:numero_6,7:numero_7}
     
     #Imprime la secuencia de inicio usando el metodo splitlines, osea que imprime las filas una a una cada 0.05 segundos
     for line in secuencia_inicio.splitlines():
@@ -144,22 +158,31 @@ def main():
     while True:
         
         try:
-            menu_selector = int(input ("selecciona tu modo \n 1: Tiro Parabolico \n 2: Sucesion de Collatz \n 3: Base de datos \n 4: Curp \n 5: algo \n 6: Multiplicacion de matrices 3x3 \n 7: Inversa de matriz 3x3 \n 8: Readme \n 9: Salir \n"))
+            menu_selector = int(input ("selecciona tu modo \n 0: Ayuda \n 1: Tiro Parabolico \n 2: Sucesion de Collatz \n 3: Base de datos \n 4: Curp \n 5: formula cuadratica \n 6: Multiplicacion de matrices 3x3 \n 7: Inversa de matriz 3x3 \n 8: Salir \n 9: Sobre el programa \n"))
             
-            #empezar funcion seleccionada
-            if menu_selector != 9:
-                dic[menu_selector]()
             
-            #finalizar el codigo    
-            elif menu_selector == 9:
-                print ("hasta la vista, baby")
-                break
-            
-            #Errores y otros
-            else:
-                print("Comando desconocido, vuelve a intentarlo")
+            match menu_selector:
+                case 0:
+                    print(instrucciones)
+                    input("presiona cualquier tecla para continuar")
+                
+                case 8:
+                    #finalizar el codigo    
+                    print ("hasta la vista, baby")
+                    break
+
+                case 9:
+                    print(readme)
+                    input("presiona cualquier tecla para continuar")
+                    
+
+                case _:
+                    #empezar funcion seleccionada
+                    dic[menu_selector]()
+                    
         except Exception as e:
-            print ("Error, vuelve a intentarlo", e)
+            print ("Error, vuelve a intentarlo.", e)
+            time.sleep(1)
 
 
 #iniciar el codigo

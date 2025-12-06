@@ -105,14 +105,14 @@ def matrixinv():
 
     except:
         print("Uno de los valores introducidos no es válido.")
-        exit()
+        return
 
     # 1. Cálculo del determinante
     determinante_de_la_matriz = aa * ((bb * cc) - (bc * cb)) - ab * ((ba * cc) - (bc * ca)) + ac * ((ba * cb) - (bb * ca))
 
     if determinante_de_la_matriz == 0:
         print("El determinante es 0, asi que la inversa no existe.")
-        exit()
+        return
 
     # 2. Cálculo de los cofactores (C)
     C11 = (bb * cc - bc * cb)

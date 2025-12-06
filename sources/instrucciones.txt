@@ -1,1 +1,5 @@
-hola
+Selecciona el programa a utilizar segun el numero de referencia.
+Para salir, espera a terminar el programa y pulsa la tecla n.
+Para repetir, pulsa cualquier otra tecla.
+
+Borrar horarios de la base de datos o repetir nombres puede causar problemas.
