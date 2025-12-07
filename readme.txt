@@ -17,4 +17,5 @@ Dependencias utilizadas:
 time
 numpy
 math
+matplotlib
 unicodedata
