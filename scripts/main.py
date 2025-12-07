@@ -10,14 +10,14 @@ from tiro_parabolico import main as tiro_parabolico
 from data_base import data_base
 #bloque B
 from curp import main as curp
-from cuadratic_formula import main as cuadratic_formula
+from quadratic_formula import main as quadratic_formula
 from bisiesto import main as anio_bisiesto
 #bloque C
 from matrices import matrixinv, matrixmult
 
 
 
-#Define funciones para usar cada uno de los modulos importados siguiendo una estructura similar
+#Define funciones para usar cada uno de los modulos importados
 
 #funciones del bloque A
 def numero_1():
@@ -31,9 +31,10 @@ def numero_1():
         salir = input("pulsa n para salir, y para repetir \n")
         match salir:
             case "y":
-                pass
+                pass #cualquier entrada distinta a n igual repite el codigo
             case "n":
-                break
+                break #regresa el menu principal
+
 
 def numero_2():
     """Sucesion de Collatz.
@@ -93,7 +94,7 @@ def numero_5():
     print("Formula cuadratica")
 
     while True:
-        cuadratic_formula()
+        quadratic_formula()
         salir = input("pulsa n para salir, y para repetir \n")
         match salir:
             case "y":

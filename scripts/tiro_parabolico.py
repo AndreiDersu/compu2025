@@ -14,7 +14,7 @@ def graficadora(
         ang (float): angulo en grados.
     """
     
-    #calcula las raices (cruces con el eje x) y pasa el angulo a radianes
+    #calcula las raices (momento donde el proyectil llega al suelo, osea aquella con x distinto a cero) y pasa el angulo a radianes
     angle=np.radians(ang)
     end= np.roots([-4.9, v * np.sin(angle), 0])
     
@@ -72,24 +72,29 @@ def main():
     """Codigo principal para graficar tiros parabolicos.
     """
     while True:
-        try:        
+        try: 
+            #angulo del usuario en grados       
             ang = float(input("Ingresa el angulo de inclinación del tiro en grados: "))
             
+            #el angulo debe ser mayor a cero y menor a noventa grados
             if ang < 90 and ang > 0:
                 pass
             else:
                 print("ingresa un angulo valido")
                 continue
             
+            #componenete |v0|, ingrasado por el usuario
             rapidez = float(input("Ingresa la rapidez inicial del tiro: "))
             
             salida = tiro_parabolico(v0=rapidez, ang=ang)
             
+            #imprime datos obtenidos de la funcion tiro_parabolico
             print("Los datos obtenitos son:")
             print (f"La altura maxima fue: {salida[0]} metros")
             print(f"El alcanse del tiro fueron {salida[1]} metros")
             print(f"La velocidad final es de {salida[2]} metros sobre segundo")
             
+            #grafica los datos
             graficadora(rapidez,ang)
             break
                 

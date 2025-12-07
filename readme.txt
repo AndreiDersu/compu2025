@@ -6,11 +6,10 @@ Emir.
 
 Para el curso de computacion de la carrera de fisica 
 de la Facultad de Ciencias, Uiversidad Nacional Autonoma de Mexico, 
-curso 2025-2.
+curso 2025-2. Profesor ...
 
 Agradecimientos a Luis Odin.
 
-git gud.
 
 Dependencias utilizadas:
 
@@ -18,3 +17,4 @@ time
 numpy
 math
 unicodedata
+matplotlib
