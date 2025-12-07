@@ -91,7 +91,7 @@ def generar_curp(nombre, apellido_paterno, apellido_materno,
     return curp
 
 def main():
-    generar_curp(
+    curp = generar_curp(
         nombre=input("Nombre (s)\n"),
         apellido_paterno=input("apellido paterno \n"),
         apellido_materno=input("apellido materno \n"),
@@ -99,11 +99,12 @@ def main():
         sexo=input("sexo (h,f) \n"),
         estado=input("tu estado de nacimiento \n") 
     )
+    print(f"tu curp es \n {curp}")
 
 if __name__ ==  "__main__":
     print("Generador de CURP")
     while True:
         try:
-            print(main())
+            main()
         except Exception as e:
             print("error:", e)

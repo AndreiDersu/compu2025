@@ -74,7 +74,7 @@ def main():
     while True:
         try: 
             #angulo del usuario en grados       
-            ang = float(input("Ingresa el angulo de inclinación del tiro en grados: "))
+            ang = float(input("Ingresa el angulo de inclinación del tiro en grados (mayor a cero y menor a noventa grados): "))
             
             #el angulo debe ser mayor a cero y menor a noventa grados
             if ang < 90 and ang > 0:

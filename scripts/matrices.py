@@ -1,15 +1,16 @@
-# ===============================================
-# Multiplicación de 2 matrices 3x3
-# Corresponde al Inciso 12
-# ===============================================
 def matrixmult():
+    # ===============================================
+    # EJERCICIO 7: Multiplicación de 2 matrices 3x3
+    # Corresponde al Inciso 12
+    # ===============================================
+
     print("Introduzca 2 Matrizes 3x3 para multiplicarlas")
     print("(introduzcalas siguiendo el siguiente formato de coordenadas):")
     print(" [0,0], [0,1], [0,2]")
     print("Matriz = [1,0],[1,1],[1,2]")
     print(" [2,0],[2,1],[2,2]")
 
-    # Función para limpiar números complejos si la parte imaginaria es cero
+    # Funcion para limpiar numeros complejos si la parte imaginaria es cero
     def limpio(x):
         """Retorna la parte real si el número es complejo y la parte imaginaria es 0, de lo contrario retorna el número."""
         # Nota: Esta función fue investigada para mejorar la presentación del resultado.
@@ -18,7 +19,7 @@ def matrixmult():
     try:
         print("Definamos el valor de la Primera Matriz: Matriz A")
         
-        # Lectura de la Matriz A (se usa complex() para aceptar números complejos o reales)
+        # Lectura de la Matriz A (se usa complex() para aceptar numeros complejos o reales)
         AAA = complex(input("Introduzca el valor de la casilla [0,0]:")) 
         AAB = complex(input("Introduzca el valor de la casilla [0,1]:"))
         AAC = complex(input("Introduzca el valor de la casilla [0,2]:"))
@@ -62,7 +63,7 @@ def matrixmult():
         ccb = (ACA * BAB) + (ACB * BBB) + (ACC * BCB) # C[2,1]
         ccc = (ACA * BAC) + (ACB * BBC) + (ACC * BCC) # C[2,2]
         
-        # Construcción e impresión de la Matriz C aplicando la función limpio
+        # Construccion e impresion de la Matriz C aplicando la función limpio
         MatrizC = [ [limpio(caa), limpio(cab), limpio(cac)],
                     [limpio(cba), limpio(cbb), limpio(cbc)],
                     [limpio(cca), limpio(ccb), limpio(ccc)] ]
@@ -76,15 +77,13 @@ def matrixmult():
 
 
 def matrixinv():
-
     # ===============================================
-    # EJERCICIO 2: Inversa de una matriz 3x3
+    # EJERCICIO 8: Inversa de una matriz 3x3
     # Corresponde al inciso 13
     # Método: Determinante y Matriz de Adjuntos
     # ===============================================
 
 
-    print("\n-------------------------------------------")
     print("Inversa de una matriz 3x3")
     print("(Introduce una Matriz siguiendo el siguiente formato de coordenadas):")
     print(" [0,0], [0,1], [0,2]")
@@ -107,14 +106,14 @@ def matrixinv():
         print("Uno de los valores introducidos no es válido.")
         return
 
-    # 1. Cálculo del determinante
+    # 1. Calculo del determinante
     determinante_de_la_matriz = aa * ((bb * cc) - (bc * cb)) - ab * ((ba * cc) - (bc * ca)) + ac * ((ba * cb) - (bb * ca))
 
     if determinante_de_la_matriz == 0:
         print("El determinante es 0, asi que la inversa no existe.")
         return
 
-    # 2. Cálculo de los cofactores (C)
+    # 2. Calculo de los cofactores (C)
     C11 = (bb * cc - bc * cb)
     C12 = -(ba * cc - bc * ca)
     C13 = (ba * cb - bb * ca)
@@ -125,7 +124,7 @@ def matrixinv():
     C32 = -(aa * bc - ac * ba)
     C33 = (aa * bb - ab * ba)
 
-    # 3. Obtención de la Matriz Adjunta (A) mediante la transpuesta de la Matriz de Cofactores
+    # 3. Obtencion de la Matriz Adjunta (A) mediante la transpuesta de la Matriz de Cofactores
     A11 = C11
     A12 = C21 # C12 traspuesta
     A13 = C31 # C13 traspuesta
@@ -136,7 +135,7 @@ def matrixinv():
     A32 = C23 # C32 traspuesta
     A33 = C33
 
-    # 4. Cálculo de la Inversa: A_inversa = (1/det) * Adjunta(A)
+    # 4. Calculo de la Inversa: A_inversa = (1/det) * Adjunta(A)
     evil_determinante = 1 / determinante_de_la_matriz
 
     inversa = [
@@ -145,12 +144,12 @@ def matrixinv():
         [A31 * evil_determinante, A32 * evil_determinante, A33 * evil_determinante]
     ]
 
-    # Definición de la función limpio (incluida aquí por si el primer código se omite)
+    # Definicion de la funcion limpio (incluida aquí por si el primer código se omite)
     def limpio(x): 
         """Retorna la parte real si el número es complejo y la parte imaginaria es 0, de lo contrario retorna el número."""
         return x.real if isinstance(x, complex) and x.imag == 0 else x
 
-    # Aplicación de la función limpio a todos los elementos de la matriz inversa
+    # Aplicacion de la funcion limpio a todos los elementos de la matriz inversa
     inversa_limpia = [[limpio(v) for v in fila] for fila in inversa]
 
     print("La matriz inversa a la que ingresaste es:")

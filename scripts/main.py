@@ -134,7 +134,7 @@ def numero_7():
             case "n":
                 break
 
-def  numero_4_2():
+def  numero_10():
     """Calcula si un anio es bisiesto o no.
     funcion para calcular un anio bisiesto.
     """
@@ -171,7 +171,8 @@ def main():
            4:numero_4, 
            5:numero_5, 
            6:numero_6, 
-           7:numero_7}
+           7:numero_7,
+           10:numero_10}
     
     
     #Imprime la secuencia de inicio usando el metodo splitlines, osea que imprime las filas una a una cada 0.05 segundos
@@ -184,7 +185,7 @@ def main():
     while True:
         
         try:
-            menu_selector = int(input ("selecciona tu modo \n 0: Ayuda \n 1: Tiro Parabolico \n 2: Sucesion de Collatz \n 3: Base de datos \n 4: Curp \n 5: formula cuadratica \n 6: Multiplicacion de matrices 3x3 \n 7: Inversa de matriz 3x3 \n 8: Salir \n 9: Sobre el programa \n"))
+            menu_selector = int(input ("selecciona tu modo \n 0: Ayuda \n 1: Tiro Parabolico \n 2: Sucesion de Collatz \n 3: Base de datos \n 4: Curp \n 5: formula cuadratica \n 6: Multiplicacion de matrices 3x3 \n 7: Inversa de matriz 3x3 \n 8: Salir \n 9: Sobre el programa \n 10: EXTRA anios bisiestos \n"))
             
             
             match menu_selector:
