@@ -11,6 +11,7 @@ from data_base import data_base
 #bloque B
 from curp import main as curp
 from cuadratic_formula import main as cuadratic_formula
+from bisiesto import main as anio_bisiesto
 #bloque C
 from matrices import matrixinv, matrixmult
 
@@ -132,6 +133,22 @@ def numero_7():
             case "n":
                 break
 
+def  numero_4_2():
+    """Calcula si un anio es bisiesto o no.
+    funcion para calcular un anio bisiesto.
+    """
+    print("Calcula si un anio es bisiesto o no")
+
+    while True:
+        anio_bisiesto()
+        salir = input("pulsa n para salir, y para repetir \n")
+        match salir:
+            case "y":
+                pass
+            case "n":
+                break
+
+
 
 #inicia el codigo principal
 def main():
@@ -147,12 +164,20 @@ def main():
     
     
     #inicia un diccionario con las funciones definidas anteriormente para poder ser seleccionadas en el menu de inicio
-    dic = {1:numero_1, 2:numero_2,3:numero_3,4:numero_4,5:numero_5,6:numero_6,7:numero_7}
+    dic = {1:numero_1, 
+           2:numero_2, 
+           3:numero_3, 
+           4:numero_4, 
+           5:numero_5, 
+           6:numero_6, 
+           7:numero_7}
+    
     
     #Imprime la secuencia de inicio usando el metodo splitlines, osea que imprime las filas una a una cada 0.05 segundos
     for line in secuencia_inicio.splitlines():
         print(f"\033[93m{line}\033[0m")
         time.sleep(0.05)
+        
         
     #Inicia el bucle principal, con el menu de inicio, sistema anti errores y una forma de salir       
     while True:
@@ -174,7 +199,6 @@ def main():
                 case 9:
                     print(readme)
                     input("presiona cualquier tecla para continuar")
-                    
 
                 case _:
                     #empezar funcion seleccionada
