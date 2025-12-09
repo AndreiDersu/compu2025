@@ -96,7 +96,7 @@ def main():
         apellido_paterno=input("apellido paterno \n"),
         apellido_materno=input("apellido materno \n"),
         fecha_nacimiento=input("fecha de nacimiento en formato YYYY-MM-DD \n"),
-        sexo=input("sexo (h,f) \n"),
+        sexo=input("sexo (h,m) \n"),
         estado=input("tu estado de nacimiento \n") 
     )
     print(f"tu curp es \n {curp}")
