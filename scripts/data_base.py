@@ -88,7 +88,7 @@ def data_base():
 			print("Lectura \n")
 			entrada = input("ingresa el número de cuenta:\n")
 			try:
-				#trta de cargar el horario del numero de cuenta ingresado
+				#trata de cargar el horario del numero de cuenta ingresado
 				horario = np.loadtxt(f"sources/horarios/{entrada}.csv", delimiter=",", dtype=str)
 				read_horario(entrada=entrada,dic=dic,horario=horario)
 			except Exception:
